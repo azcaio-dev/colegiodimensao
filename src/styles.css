@@ -1,0 +1,2292 @@
+/* ==========================================================================
+   VARIÁVEIS (cores e fontes)
+   ========================================================================== */
+
+:root {
+  --navy: #030b2b;
+  --blue: #1e6bff;
+  --sky: #2f9bff;
+  --cyan: #14c8ee;
+  --yellow: #ffc928;
+  --red: #ff4d5e;
+  --purple: #9b6bff;
+  --ink: #fff;
+  --muted: #a9bbe8;
+  --line: rgba(80, 140, 255, .3);
+  --hh: 96px;
+  --head: 'Outfit', 'Trebuchet MS', sans-serif;
+  --body: 'Nunito', 'Segoe UI', Arial, sans-serif;
+  --script: 'Caveat', 'Segoe Script', cursive;
+}
+
+
+/* ==========================================================================
+   BASE (reset, tipografia, links)
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--hh);
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--ink);
+  font: 400 1.05rem/1.6 var(--body);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty; /* evita palavra sozinha na última linha */
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--head);
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.acc-yellow {
+  color: var(--yellow);
+}
+
+.acc-blue {
+  color: var(--sky);
+}
+
+.acc-cyan {
+  color: var(--cyan);
+}
+
+
+/* ==========================================================================
+   LAYOUT GERAL (container, seções, títulos)
+   ========================================================================== */
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  width: 100%;
+}
+
+.sec {
+  position: relative;
+  min-height: calc(100svh - var(--hh));
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+  overflow: hidden;
+}
+
+.dark {
+  background: radial-gradient(700px 420px at 100% 100%, rgba(30, 90, 255, .35), transparent 65%), radial-gradient(600px 400px at 0 100%, rgba(70, 50, 210, .3), transparent 65%), var(--navy);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 99px;
+  background: rgba(30, 107, 255, .18);
+  border: 1px solid var(--line);
+  color: #4fb0ff;
+  font: 800 .82rem var(--body);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.sec h2 {
+  font-size: clamp(2rem, 3.4vw, 3.3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-top: 16px;
+  max-width: 15ch;
+}
+
+.sec h2.wide {
+  max-width: 26ch;
+}
+
+.sec h2 span {
+  display: block;
+}
+
+.sec .wrap p {
+  color: #dce6ff;
+}
+
+.head-row {
+  display: flex;
+  justify-content: flex-start; /* texto manuscrito fica perto do título, sem vazio no meio */
+  align-items: flex-start;
+  gap: clamp(32px, 7vw, 110px);
+}
+
+.head-row p {
+  margin-top: 12px;
+  max-width: 58ch;
+  font-size: 1rem;
+}
+
+.script-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+  align-self: flex-start;
+  margin: 6px 10px 0 0;
+}
+
+.script {
+  display: inline-block;
+  font: 700 clamp(2.2rem, 3.2vw, 3.2rem)/1.05 var(--script);
+  color: var(--sky);
+  transform: rotate(-8deg);
+  max-width: 300px;
+}
+
+.script.s2 {
+  max-width: 320px;
+  margin-top: 20px; /* desce o texto para a inclinação não passar da linha do título */
+}
+
+.script.s3 {
+  position: absolute;
+  right: 3%;
+  top: 9%;
+  font-size: 2.3rem;
+  max-width: 230px;
+}
+
+.plane {
+  position: absolute;
+  width: 190px;
+  opacity: .9;
+}
+
+.script-box .plane {
+  position: static;
+  width: 190px;
+  flex: none;
+}
+
+.left-plane {
+  left: 2%;
+  bottom: 12%;
+  width: 170px;
+}
+
+.pencil {
+  position: absolute;
+  right: 3%;
+  bottom: 6%;
+  width: 110px;
+  opacity: 0.75;
+}
+
+.go {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--sky);
+  color: var(--sky);
+  flex: none;
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(30, 107, 255, .25);
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+
+/* ==========================================================================
+   BOTÕES
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font: 700 1rem var(--head);
+  padding: 12px 24px;
+  border-radius: 99px;
+  background: var(--yellow);
+  color: #0a2a8a;
+  border: 0;
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #4fb0ff;
+  box-shadow: inset 0 0 0 2px var(--blue);
+}
+
+.big-btn {
+  padding: 20px 30px;
+  font-size: 1.15rem;
+}
+
+.btn.wide {
+  width: 100%;
+  justify-content: center;
+  padding: 18px;
+}
+
+
+/* ==========================================================================
+   CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--hh);
+  padding-top: env(safe-area-inset-top, 0px);
+  background: rgba(3, 11, 43, .86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(80, 140, 255, .2);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 68px;
+  width: auto;
+  filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a:not(.btn) {
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 0;
+  border-bottom: 3px solid transparent;
+}
+
+nav a.on {
+  border-color: var(--sky);
+}
+
+
+/* ==========================================================================
+   HERO (início)
+   ========================================================================== */
+
+.hero {
+  background: radial-gradient(800px 500px at 78% 25%, rgba(40, 110, 255, .7), transparent 65%), linear-gradient(135deg, #02104f 0, #0432b0 60%, #0a4fe0 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  font-weight: 800;
+  line-height: 1.02;
+  margin-top: 20px;
+}
+
+.hero h1 span {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero .sub {
+  margin-top: 22px;
+  max-width: 46ch;
+  font-size: 1.2rem;
+  color: #c9d9ff;
+  text-wrap: balance; /* AJUSTE: evita a palavra sozinha ("nome.") na última linha */
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+/* AJUSTE: botão secundário do hero com contraste (texto claro + borda clara sobre o azul) */
+.hero .btn.ghost {
+  color: #fff;
+  background: rgba(255, 255, 255, .06);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .55);
+}
+
+.hero .btn.ghost:hover {
+  background: rgba(255, 255, 255, .14);
+  box-shadow:
+    inset 0 0 0 2px #fff,
+    0 8px 22px rgba(0, 0, 40, .25);
+}
+
+.turnos {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 34px 0 0;
+}
+
+.turnos li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 22px;
+  border-left: 1px solid var(--line);
+}
+
+.turnos li:first-child {
+  padding-left: 0;
+  border: 0;
+}
+
+.turnos strong {
+  display: block;
+  font: 700 1.1rem var(--head);
+}
+
+.ico-round {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  flex: none;
+}
+
+/* AJUSTE: as linhas do grid agora têm minmax(0, 1fr). Antes, "1fr" deixava a altura
+   das fotos crescer além do mosaico e o overflow:hidden do hero cortava tudo no fim. */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  height: clamp(440px, 70vh, 640px);
+}
+
+.mosaic > * {
+  min-height: 0;
+  min-width: 0;
+}
+
+.mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 14px 30px rgba(0, 0, 40, .4);
+}
+
+.mosaic .big {
+  grid-row: span 2;
+  position: relative;
+}
+
+.mosaic .big::before {
+  content: "";
+  position: absolute;
+  inset: -10px 12px 10px -18px;
+  border: 2px solid var(--yellow);
+  border-radius: 28px;
+  transform: rotate(-3deg);
+}
+
+.mosaic .big img {
+  position: relative;
+  transform: perspective(900px) rotateY(-7deg) rotate(-1.5deg);
+}
+
+
+/* ==========================================================================
+   SOBRE
+   ========================================================================== */
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.sobre-grid p {
+  margin-top: 16px;
+  max-width: 52ch;
+}
+
+.sobre-grid p.soft {
+  color: var(--muted);
+}
+
+.feats {
+  display: grid;
+  gap: 18px;
+}
+
+.feat {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 26px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(20, 60, 170, .4), rgba(8, 24, 80, .6));
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--c);
+}
+
+.feat > div {
+  flex: 1;
+}
+
+.feat h3 {
+  font-size: 1.4rem;
+}
+
+.feat p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.feat.blue {
+  --c: var(--blue);
+}
+
+.feat.yellow {
+  --c: var(--yellow);
+}
+
+.feat.red {
+  --c: var(--red);
+}
+
+.feat .go,
+.feat .tile {
+  color: var(--c);
+  border-color: var(--c);
+}
+
+
+/* ==========================================================================
+   NÍVEIS DE ENSINO
+   ========================================================================== */
+
+.lvls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.lvl {
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(14, 40, 120, .55), rgba(6, 18, 64, .8));
+  border: 1px solid var(--line);
+}
+
+.lvl img {
+  width: 100%;
+  aspect-ratio: 3/1.25;
+  object-fit: cover;
+}
+
+.lvl-body {
+  position: relative;
+  padding: 18px 22px 22px;
+}
+
+.lvl-body .go {
+  position: absolute;
+  right: 20px;
+  top: 14px;
+}
+
+.lvl h3 {
+  font-size: 1.5rem;
+  margin-top: 12px;
+}
+
+.lvl p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: .92rem;
+  background: rgba(30, 107, 255, .25);
+  color: #7cc0ff;
+  box-shadow: inset 0 0 0 1px rgba(124, 192, 255, .35);
+}
+
+.tag.yellow {
+  background: rgba(255, 201, 40, .2);
+  color: #ffd75a;
+  box-shadow: inset 0 0 0 1px rgba(255, 201, 40, .55);
+}
+
+.tag.purple {
+  background: rgba(155, 107, 255, .22);
+  color: #c3a6ff;
+  box-shadow: inset 0 0 0 1px rgba(195, 166, 255, .4);
+}
+
+.go.yellow {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.go.purple {
+  color: var(--purple);
+  border-color: var(--purple);
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+  padding: 14px 22px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #1e4fe0, #3a2fc0);
+  border: 1px solid var(--line);
+}
+
+.strip-ico {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #dbe6ff;
+  color: #1e4fe0;
+  flex: none;
+}
+
+
+/* ==========================================================================
+   ESTRUTURA (galeria)
+   ========================================================================== */
+
+.gal {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr)) minmax(0, .8fr);
+  gap: 14px;
+  height: clamp(420px, 56vh, 560px);
+  margin-top: 20px;
+}
+
+.gal figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.gal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gal .big {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+
+.gal figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 99px;
+  background: rgba(5, 16, 64, .88);
+  font: 700 .95rem var(--head);
+}
+
+
+/* ==========================================================================
+   CONTATO (informações e formulário)
+   ========================================================================== */
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.contato-grid p {
+  margin-top: 12px;
+  max-width: 50ch;
+}
+
+.info {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.info li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  font-size: .97rem;
+  line-height: 1.45;
+}
+
+.info b {
+  display: block;
+  color: var(--sky);
+  font-size: 1.02rem;
+}
+
+.info a {
+  color: #4fb0ff;
+}
+
+.ibox {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--sky);
+  color: var(--sky);
+  flex: none;
+}
+
+.nota {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--purple);
+  background: rgba(30, 60, 170, .25);
+}
+
+.nota .tile {
+  width: 54px;
+  height: 54px;
+}
+
+.nota h3 {
+  font-size: 1.1rem;
+}
+
+.nota p {
+  margin-top: 2px;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.fcard {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(8, 28, 100, .55);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 50px rgba(0, 0, 40, .4);
+}
+
+.fhead {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.fhead h3 {
+  font-size: 1.5rem;
+}
+
+.fhead p {
+  margin-top: 2px;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.fcard label {
+  font-weight: 800;
+  display: grid;
+  gap: 6px;
+  font-size: .95rem;
+}
+
+.fld {
+  position: relative;
+  display: block;
+}
+
+.fld > svg:first-child {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  color: #5aa8ff;
+}
+
+.fld .chev {
+  position: absolute;
+  right: 16px;
+  top: 15px;
+  left: auto;
+  color: var(--ink);
+}
+
+.fld input,
+.fld select,
+.fld textarea {
+  width: 100%;
+  font: inherit;
+  font-weight: 400;
+  padding: 13px 16px 13px 50px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(10, 30, 100, .6);
+  color: var(--ink);
+  appearance: none;
+}
+
+.fld textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.fld ::placeholder {
+  color: #7f95cf;
+}
+
+/* Aviso de que o envio abre o WhatsApp */
+.contato-grid .fcard p.fnote {
+  margin: 0;
+  max-width: none;
+  text-align: center;
+  font-size: .84rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+
+/* ==========================================================================
+   RODAPÉ
+   ========================================================================== */
+
+footer {
+  background: #020820;
+  padding: 28px 0 calc(28px + env(safe-area-inset-bottom, 0px));
+  color: var(--muted);
+}
+
+footer .brand-logo {
+  height: 52px;
+}
+
+footer .wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 1699px) {
+  .left-plane,
+  .pencil,
+  .script.s3 {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero h1 span {
+    white-space: normal;
+  }
+
+  nav a:not(.btn) {
+    display: none;
+  }
+}
+/* ==========================================================================
+   ACESSIBILIDADE (movimento reduzido)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .btn {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES DO HERO
+   ========================================================================== */
+
+/* ---------- Entrada inicial ---------- */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(55px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ---------- Glow do fundo ---------- */
+
+@keyframes heroGlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: .65;
+  }
+
+  50% {
+    transform: translate3d(-30px, 18px, 0) scale(1.05);
+    opacity: .85;
+  }
+
+  100% {
+    transform: translate3d(20px, -15px, 0) scale(1.02);
+    opacity: .7;
+  }
+}
+
+.hero {
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  right: 2%;
+  top: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(70, 140, 255, .25) 0%,
+    rgba(50, 110, 255, .12) 35%,
+    transparent 70%
+  );
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: -1;
+  animation: heroGlow 9s ease-in-out infinite alternate;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ---------- Conteúdo da esquerda ---------- */
+
+.hero-grid > div:first-child > .pill {
+  opacity: 0;
+  animation: heroFadeUp .7s cubic-bezier(.22, 1, .36, 1) .08s forwards;
+}
+
+.hero-grid > div:first-child > h1 {
+  opacity: 0;
+  animation: heroFadeUp .8s cubic-bezier(.22, 1, .36, 1) .2s forwards;
+}
+
+.hero-grid > div:first-child > .sub {
+  opacity: 0;
+  animation: heroFadeUp .8s cubic-bezier(.22, 1, .36, 1) .35s forwards;
+}
+
+.hero-grid > div:first-child > .cta {
+  opacity: 0;
+  animation: heroFadeUp .8s cubic-bezier(.22, 1, .36, 1) .5s forwards;
+}
+
+.hero-grid > div:first-child > .turnos {
+  opacity: 0;
+  animation: heroFadeUp .8s cubic-bezier(.22, 1, .36, 1) .65s forwards;
+}
+
+
+/* ---------- Mosaic ---------- */
+
+.mosaic {
+  opacity: 0;
+  animation: heroFadeRight 1s cubic-bezier(.22, 1, .36, 1) .25s forwards;
+}
+
+
+/* ---------- Flutuação das imagens ---------- */
+
+@keyframes mosaicFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes mosaicFloatSmall {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.mosaic > img:nth-child(2) {
+  animation: mosaicFloat 6s ease-in-out 1.4s infinite;
+}
+
+.mosaic > img:nth-child(3) {
+  animation: mosaicFloatSmall 7s ease-in-out 1.7s infinite;
+}
+
+
+/* ---------- Foto principal: perspectiva + zoom lento ---------- */
+
+@keyframes mainPhotoFloat {
+  0%,
+  100% {
+    transform: perspective(900px) rotateY(-7deg) rotate(-1.5deg) scale(1);
+  }
+
+  50% {
+    transform: perspective(900px) rotateY(-7deg) rotate(-1.5deg) scale(1.025);
+  }
+}
+
+.mosaic .big img {
+  animation: mainPhotoFloat 7s ease-in-out 1.2s infinite;
+}
+
+
+/* ---------- Moldura amarela ---------- */
+
+@keyframes frameFloat {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-1.5deg) translateY(-6px);
+  }
+}
+
+.mosaic .big::before {
+  animation: frameFloat 5.5s ease-in-out 1.5s infinite;
+}
+
+
+/* ---------- Turnos ---------- */
+
+@keyframes turnoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.turnos li:nth-child(1) {
+  animation: turnoFloat 4.5s ease-in-out 1.6s infinite;
+}
+
+.turnos li:nth-child(2) {
+  animation: turnoFloat 5s ease-in-out 1.8s infinite;
+}
+
+.turnos li:nth-child(3) {
+  animation: turnoFloat 5.5s ease-in-out 2s infinite;
+}
+
+
+/* ---------- Ícones dos turnos ---------- */
+
+@keyframes iconPulse {
+  0%,
+  85%,
+  100% {
+    transform: scale(1);
+  }
+
+  90% {
+    transform: scale(1.1);
+  }
+
+  95% {
+    transform: scale(1);
+  }
+}
+
+.turnos .ico-round {
+  animation: iconPulse 5s ease-in-out 2.5s infinite;
+}
+
+
+/* ---------- Botões ---------- */
+
+.btn {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background-color .25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 30, .22);
+}
+
+.btn svg:last-child {
+  transition: transform .25s ease;
+}
+
+.btn:hover svg:last-child {
+  transform: translateX(4px);
+}
+
+.btn.ghost:hover {
+  box-shadow:
+    inset 0 0 0 2px var(--blue),
+    0 8px 22px rgba(30, 107, 255, .18);
+}
+
+
+/* ---------- Badge ---------- */
+
+.hero .pill svg {
+  animation: iconPulse 5s ease-in-out 2s infinite;
+}
+
+
+/* ---------- Acessibilidade ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero-grid > div:first-child > .pill,
+  .hero-grid > div:first-child > h1,
+  .hero-grid > div:first-child > .sub,
+  .hero-grid > div:first-child > .cta,
+  .hero-grid > div:first-child > .turnos,
+  .mosaic,
+  .mosaic > img:nth-child(2),
+  .mosaic > img:nth-child(3),
+  .mosaic .big img,
+  .mosaic .big::before,
+  .turnos li,
+  .turnos .ico-round,
+  .hero .pill svg {
+    animation: none;
+    opacity: 1;
+  }
+
+  .btn,
+  .btn svg:last-child {
+    transition: none;
+  }
+}
+
+  /* ==========================================================================
+   ANIMAÇÕES DAS SEÇÕES
+   ========================================================================== */
+
+@keyframes sectionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(55px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ==========================================================================
+   SOBRE
+   ========================================================================== */
+
+#sobre .sobre-grid > div:first-child,
+#sobre .feats .feat {
+  opacity: 0;
+}
+
+#sobre.section-visible .sobre-grid > div:first-child {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+#sobre.section-visible .feats .feat:nth-child(1) {
+  animation: sectionFromRight .7s cubic-bezier(.22, 1, .36, 1) .12s forwards;
+}
+
+#sobre.section-visible .feats .feat:nth-child(2) {
+  animation: sectionFromRight .7s cubic-bezier(.22, 1, .36, 1) .25s forwards;
+}
+
+#sobre.section-visible .feats .feat:nth-child(3) {
+  animation: sectionFromRight .7s cubic-bezier(.22, 1, .36, 1) .38s forwards;
+}
+
+
+/* Hover dos cards */
+
+#sobre .feat {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+#sobre .feat:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
+}
+
+#sobre .feat .go {
+  transition: transform .3s ease;
+}
+
+#sobre .feat:hover .go {
+  transform: translateX(4px);
+}
+
+
+/* ==========================================================================
+   NÍVEIS
+   ========================================================================== */
+
+#niveis .head-row,
+#niveis .lvl,
+#niveis .strip {
+  opacity: 0;
+}
+
+#niveis.section-visible .head-row {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+#niveis.section-visible .lvl:nth-child(1) {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) .15s forwards;
+}
+
+#niveis.section-visible .lvl:nth-child(2) {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) .28s forwards;
+}
+
+#niveis.section-visible .lvl:nth-child(3) {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) .41s forwards;
+}
+
+#niveis.section-visible .strip {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) .54s forwards;
+}
+
+
+/* ==========================================================================
+   ESTRUTURA
+   ========================================================================== */
+
+#estrutura .head-row,
+#estrutura .gal figure {
+  opacity: 0;
+}
+
+#estrutura.section-visible .head-row {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+#estrutura.section-visible .gal figure {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+#estrutura.section-visible .gal figure:nth-child(1) {
+  animation-delay: .10s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(2) {
+  animation-delay: .18s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(3) {
+  animation-delay: .26s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(4) {
+  animation-delay: .34s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(5) {
+  animation-delay: .42s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(6) {
+  animation-delay: .50s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(7) {
+  animation-delay: .58s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(8) {
+  animation-delay: .66s;
+}
+
+#estrutura.section-visible .gal figure:nth-child(9) {
+  animation-delay: .74s;
+}
+
+
+/* ==========================================================================
+   CONTATO
+   ========================================================================== */
+
+#contato .contato-grid > div:first-child,
+#contato .fcard {
+  opacity: 0;
+}
+
+#contato.section-visible .contato-grid > div:first-child {
+  animation: sectionFadeUp .7s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+#contato.section-visible .fcard {
+  animation: sectionFromRight .8s cubic-bezier(.22, 1, .36, 1) .2s forwards;
+}
+
+
+/* ==========================================================================
+   ACESSIBILIDADE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  #sobre .sobre-grid > div:first-child,
+  #sobre .feats .feat,
+  #niveis .head-row,
+  #niveis .lvl,
+  #niveis .strip,
+  #estrutura .head-row,
+  #estrutura .gal figure,
+  #contato .contato-grid > div:first-child,
+  #contato .fcard {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  #sobre .feat {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE — AJUSTES DE LAYOUT
+   ========================================================================== */
+
+@media (max-width: 760px) {
+
+  /* ---------- Base ---------- */
+
+  :root {
+    --hh: 72px;
+  }
+
+  body {
+    font-size: 1rem;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .sec {
+    min-height: auto;
+    padding: 72px 0;
+  }
+
+  .sec h2 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    line-height: 1.08;
+    max-width: none;
+  }
+
+  .sec h2.wide {
+    max-width: none;
+  }
+
+
+  /* ---------- Cabeçalho ---------- */
+
+  header {
+    height: var(--hh);
+  }
+
+  .bar {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .brand-logo {
+    height: 52px;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav .btn {
+    padding: 10px 14px;
+    font-size: .85rem;
+    gap: 6px;
+  }
+
+  nav .btn svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 54px 0 64px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 11vw, 3.4rem);
+    line-height: 1.02;
+    margin-top: 16px;
+  }
+
+  .hero h1 span {
+    white-space: normal;
+  }
+
+  .hero .sub {
+    margin-top: 18px;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .big-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 17px 20px;
+    font-size: 1rem;
+  }
+
+  .turnos {
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  .turnos li {
+    flex-direction: column;
+    gap: 7px;
+    padding: 0 10px;
+    border-left: 0;
+    text-align: center;
+  }
+
+  .turnos li:first-child {
+    padding-left: 0;
+  }
+
+  .turnos li:last-child {
+    padding-right: 0;
+  }
+
+  .turnos strong {
+    font-size: .9rem;
+  }
+
+  .ico-round {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  /* ---------- Mosaic do Hero ---------- */
+
+  .mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 230px 150px;
+    gap: 10px;
+    height: auto;
+  }
+
+  .mosaic .big {
+    grid-column: span 2;
+    grid-row: 1;
+  }
+
+  .mosaic > img:nth-child(2),
+  .mosaic > img:nth-child(3) {
+    grid-row: 2;
+  }
+
+  .mosaic img {
+    border-radius: 16px;
+  }
+
+  .mosaic .big::before {
+    inset: -6px 8px 6px -8px;
+    border-radius: 20px;
+  }
+
+  .mosaic .big img {
+    transform: perspective(900px) rotateY(-3deg) rotate(-.7deg);
+  }
+
+
+  /* ---------- Sobre ---------- */
+
+  .sobre-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .sobre-grid p {
+    max-width: none;
+    font-size: .98rem;
+  }
+
+  .feats {
+    gap: 12px;
+  }
+
+  .feat {
+    gap: 14px;
+    padding: 18px 16px;
+    border-left-width: 5px;
+  }
+
+  .feat .tile {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .feat .tile svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .feat h3 {
+    font-size: 1.15rem;
+  }
+
+  .feat p {
+    font-size: .9rem;
+    line-height: 1.45;
+  }
+
+  .feat .go {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* ---------- Níveis ---------- */
+
+  .head-row {
+    display: block;
+  }
+
+  .head-row p {
+    max-width: none;
+    font-size: .98rem;
+  }
+
+  .script-box {
+    display: none;
+  }
+
+  .lvls {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .lvl {
+    border-radius: 18px;
+  }
+
+  .lvl img {
+    aspect-ratio: 16 / 8;
+  }
+
+  .lvl-body {
+    padding: 17px 18px 20px;
+  }
+
+  .lvl h3 {
+    font-size: 1.35rem;
+  }
+
+  .lvl p {
+    font-size: .94rem;
+  }
+
+  /* Removido visualmente no mobile também */
+  .strip {
+    display: none;
+  }
+
+
+  /* ---------- Estrutura ---------- */
+
+  .gal {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 170px 170px 150px 150px 150px;
+    gap: 9px;
+    height: auto;
+    margin-top: 28px;
+  }
+
+  .gal .big {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .gal figure {
+    border-radius: 14px;
+  }
+
+  .gal figcaption {
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 9px;
+    font-size: .72rem;
+    text-align: center;
+  }
+
+  .gal figcaption svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+  }
+
+
+  /* ---------- Contato ---------- */
+
+  .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contato-grid p {
+    max-width: none;
+    font-size: .98rem;
+  }
+
+  .info {
+    gap: 16px;
+  }
+
+  .info li {
+    gap: 12px;
+    font-size: .9rem;
+  }
+
+  .ibox {
+    width: 42px;
+    height: 42px;
+  }
+
+   .nota {
+    width: 100%;
+    max-width: none;
+    margin: 18px 0 0;
+
+    padding: 10px 14px;
+    gap: 10px;
+
+    border-radius: 14px;
+  }
+
+  .nota .tile {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+
+  .nota .tile svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nota h3 {
+    font-size: .88rem;
+    line-height: 1.2;
+    margin: 0 0 3px;
+  }
+
+  .nota p {
+    font-size: .72rem;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .fcard {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .fhead {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .fhead .tile {
+    width: 50px;
+    height: 50px;
+  }
+
+  .fhead h3 {
+    font-size: 1.25rem;
+  }
+
+  .fhead p {
+    font-size: .86rem;
+    line-height: 1.45;
+  }
+
+  .fld input,
+  .fld select,
+  .fld textarea {
+    font-size: .95rem;
+  }
+
+
+ /* ---------- Rodapé ---------- */
+
+footer {
+  padding-top: 32px;
+  text-align: center;
+}
+
+footer .wrap {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+
+footer .brand-logo {
+  height: 42px;
+}
+
+footer p {
+  font-size: .82rem;
+  line-height: 1.45;
+  max-width: 300px;
+  margin: 0 auto;
+}
+}
+
+/* ==========================================================================
+   HERO: turnos centralizados no celular
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .hero .turnos {
+    justify-content: center;
+    gap: 100px;
+  }
+
+  .hero .turnos li {
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+  }
+}
+
+/* ==========================================================================
+   HALFTONE (efeito da logo, no fundo das seções)
+   ========================================================================== */
+
+.halftone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(42vw, 560px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.halftone.left {
+  left: 0;
+}
+
+.halftone.right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.hero .halftone {
+  opacity: 0.14;
+}
+
+@media (max-width: 1000px) {
+  .halftone {
+    width: 50vw;
+    opacity: 0.08;
+  }
+}
+
+/* ==========================================================================
+   HERO: menos espaço no topo, altura segue o conteúdo
+   ========================================================================== */
+
+.sec.hero {
+  height: auto;
+  max-height: none;
+  min-height: auto;
+  padding: 32px 0 56px;
+}
+
+.hero h1 {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   HEADER: some ao rolar para baixo, volta ao rolar para cima
+   ========================================================================== */
+
+header {
+  transition: transform 0.35s ease;
+}
+
+header.oculto {
+  transform: translateY(-100%);
+}
+
+header:focus-within {
+  transform: none;
+}
+
+html {
+  scroll-padding-top: 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header {
+    transition: none;
+  }
+}
+
+
+/* ==========================================================================
+   MODO NOTEBOOK (telas baixas)
+   Em monitores grandes nada muda. Em notebooks (altura útil até 820px)
+   encolhemos espaçamentos, títulos, cards, fotos e formulário para que
+   cada seção caiba inteira na tela, sem precisar rolar para ver tudo.
+   Para ajustar o limite, mude o max-height: 820px nos dois @media abaixo.
+   ========================================================================== */
+
+/* Título de Estrutura quebrava em 3 linhas ("para" sozinho) */
+@media (min-width: 761px) {
+  #estrutura h2 {
+    max-width: 26ch;
+  }
+}
+
+@media (min-width: 1001px) and (max-height: 820px) {
+
+  /* ---------- Geral ---------- */
+
+  .sec {
+    padding: 32px 0;
+    min-height: calc(100svh - 48px); /* a seção preenche a tela, sem a próxima aparecer no pé */
+  }
+
+  .sec h2 {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    margin-top: 12px;
+  }
+
+  .pill {
+    padding: 6px 14px;
+    font-size: .76rem;
+  }
+
+  .head-row p {
+    max-width: 74ch;
+    margin-top: 8px;
+    font-size: .94rem;
+    line-height: 1.5;
+  }
+
+
+  /* ---------- Hero ---------- */
+
+  .sec.hero {
+    padding: 24px 0 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  }
+
+  .hero .sub {
+    margin-top: 16px;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  .cta {
+    margin-top: 22px;
+  }
+
+  .big-btn {
+    padding: 15px 26px;
+    font-size: 1.05rem;
+  }
+
+  .turnos {
+    margin-top: 24px;
+  }
+
+  .mosaic {
+    height: clamp(320px, calc(100svh - var(--hh) - 80px), 560px);
+  }
+
+
+  /* ---------- Sobre ---------- */
+
+  #sobre h2 {
+    max-width: 22ch;
+    font-size: clamp(1.9rem, 3.3vw, 2.8rem);
+  }
+
+  #sobre h2 span {
+    text-wrap: balance;
+  }
+
+  .sobre-grid {
+    gap: 48px;
+  }
+
+  .sobre-grid p {
+    margin-top: 14px;
+    max-width: none;
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  .feats {
+    gap: 16px;
+  }
+
+  .feat {
+    padding: 22px 24px;
+    gap: 20px;
+  }
+
+  .feat .tile {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+  }
+
+  .feat .tile svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .feat h3 {
+    font-size: 1.35rem;
+  }
+
+  .feat p {
+    font-size: .98rem;
+    line-height: 1.45;
+  }
+
+  .feat .go {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  /* ---------- Níveis ---------- */
+
+  .lvls {
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  .lvl img {
+    aspect-ratio: 3 / 1;
+  }
+
+  .lvl-body {
+    padding: 12px 18px 16px;
+  }
+
+  .lvl-body .go {
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 16px;
+  }
+
+  .tag {
+    padding: 4px 12px;
+    font-size: .85rem;
+  }
+
+  .lvl h3 {
+    font-size: 1.3rem;
+    margin-top: 8px;
+  }
+
+  .lvl p {
+    margin-top: 4px;
+    font-size: .9rem;
+    line-height: 1.4;
+  }
+
+
+  /* ---------- Estrutura (galeria em 2 linhas: foto grande + 8 menores) ---------- */
+
+  .gal {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    height: clamp(280px, calc(100svh - 290px), 480px);
+    margin-top: 14px;
+  }
+
+  .gal .big {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .gal figure {
+    border-radius: 16px;
+  }
+
+  .gal figcaption {
+    left: 8px;
+    bottom: 8px;
+    max-width: calc(100% - 16px);
+    gap: 6px;
+    padding: 5px 11px;
+    font-size: clamp(.68rem, .9vw, .82rem);
+    line-height: 1.2;
+  }
+
+  .gal figcaption svg {
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+
+
+  /* ---------- Contato ---------- */
+
+  .contato-grid {
+    gap: 48px;
+  }
+
+  #contato h2 {
+    font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  }
+
+  .contato-grid p {
+    margin-top: 8px;
+    max-width: none;
+    font-size: .94rem;
+    line-height: 1.5;
+  }
+
+  .info {
+    margin-top: 14px;
+    gap: 8px;
+  }
+
+  .info li {
+    gap: 12px;
+    font-size: .88rem;
+    line-height: 1.35;
+  }
+
+  .info b {
+    font-size: .95rem;
+  }
+
+  .ibox {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .ibox svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nota {
+    margin-top: 12px;
+    padding: 10px 16px;
+    gap: 14px;
+  }
+
+  .nota .tile {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .nota .tile svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nota h3 {
+    font-size: 1rem;
+  }
+
+  .nota p {
+    font-size: .85rem;
+    line-height: 1.35;
+  }
+
+  .fcard {
+    padding: 18px 22px;
+    gap: 10px;
+    border-radius: 20px;
+  }
+
+  .fhead {
+    gap: 14px;
+  }
+
+  .fhead .tile {
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+  }
+
+  .fhead .tile svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fhead h3 {
+    font-size: 1.25rem;
+  }
+
+  .fhead p {
+    font-size: .85rem;
+    line-height: 1.4;
+  }
+
+  .fcard label {
+    gap: 4px;
+    font-size: .88rem;
+  }
+
+  .fld > svg:first-child {
+    left: 14px;
+    top: 12px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .fld .chev {
+    top: 13px;
+    right: 14px;
+  }
+
+  .fld input,
+  .fld select,
+  .fld textarea {
+    padding: 10px 14px 10px 44px;
+    font-size: .95rem;
+  }
+
+  .fld textarea {
+    min-height: 60px;
+  }
+
+  .btn.wide {
+    padding: 13px;
+  }
+}
+
+/* Contatos em 2 colunas (endereço ocupa a linha toda) para ganhar altura */
+@media (min-width: 1200px) and (max-height: 820px) {
+  .info {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+  }
+
+  .info li:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .info li > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
