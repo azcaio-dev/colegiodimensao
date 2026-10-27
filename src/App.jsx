@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
-  GraduationCap, CalendarDays, Users, Sun, Sunrise, SunMoon, Heart, BookOpen, ArrowRight, ChevronRight, ChevronDown,
+  GraduationCap, CalendarDays, Users, Sun, Sunrise, SunMoon, Heart, BookOpen, ChevronRight, ChevronDown,
   MapPin, MessageCircle, Mail, Clock, Send, User, Phone, Building2, Utensils, Gamepad2, ExternalLink,
   Volleyball, Smile, Trophy, UtensilsCrossed,
 } from 'lucide-react'
@@ -192,7 +192,7 @@ export default function App() {
                 <span className="rise" style={{ '--d': '.2s' }}>Educar é cuidar</span>
                 <span className="acc-yellow rise" style={{ '--d': '.35s' }}>de cada detalhe.</span>
               </h1>
-              <p className="sub rise" style={{ '--d': '.5s' }}>Educação infantil e ensino fundamental no coração de Ouro Preto, em Olinda. Uma escola onde seu filho é conhecido pelo nome.</p>
+              <p className="sub rise" style={{ '--d': '.5s' }}><strong>Desde 1986</strong> educando crianças no coração de Ouro Preto, em Olinda. Da educação infantil ao fundamental II, com acompanhamento de perto, rotina organizada e uma escola onde seu filho é conhecido pelo nome.</p>
               <div className="cta rise" style={{ '--d': '.65s' }}>
                 <a className="btn big-btn" href="#contato"><CalendarDays size={22} />Agendar visita<ChevronRight size={20} className="arrow" /></a>
                 <a className="btn ghost big-btn" href="#estrutura">Conhecer a estrutura<ChevronRight size={20} className="arrow" /></a>
@@ -225,7 +225,6 @@ export default function App() {
                 <div className={`feat ${cor}`} key={t}>
                   <span className="tile"><Icon size={32} /></span>
                   <div><h3>{t}</h3><p>{s}</p></div>
-                  <span className="go"><ArrowRight size={20} /></span>
                 </div>
               ))}
             </div>
@@ -251,7 +250,6 @@ export default function App() {
                   <img src={n.img} alt={n.alt} />
                   <div className="lvl-body">
                     <span className={`tag ${n.cor}`}><n.icone size={18} />{n.etapa}</span>
-                    <span className={`go ${n.cor}`}><ArrowRight size={20} /></span>
                     <h3>{n.titulo}</h3>
                     <p>{n.texto}</p>
                   </div>
@@ -295,7 +293,7 @@ export default function App() {
                 <li><span className="ibox"><Mail size={22} /></span><div><b>E-mail</b><a href={`mailto:${escola.email}`}>{escola.email}</a></div></li>
                 <li><span className="ibox"><Clock size={22} /></span><div><b>Atendimento</b>{escola.horario}</div></li>
               </ul>
-              <div className="nota"><span className="tile"><Users size={26} /></span><div><h3>Mensalidades e bolsas</h3><p>Cada família tem uma condição. Fale com a secretaria para conhecer valores e possibilidades.</p></div></div>
+              <div className="nota"><span className="tile"><Users size={26} /></span><div><h3>Mensalidades</h3><p>Cada família tem uma condição. Fale com a secretaria para conhecer valores e possibilidades.</p></div></div>
             </div>
             <form onSubmit={enviarWhatsApp} className="fcard">
               <div className="fhead"><span className="tile"><MessageCircle size={30} /></span><div><h3>Envie sua mensagem</h3><p>Preencha os campos abaixo e nossa equipe entrará em contato o mais breve possível.</p></div></div>

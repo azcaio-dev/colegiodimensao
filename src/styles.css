@@ -357,10 +357,15 @@ nav a.on {
 
 .hero .sub {
   margin-top: 22px;
-  max-width: 46ch;
+  max-width: 54ch;
   font-size: 1.2rem;
   color: #c9d9ff;
   text-wrap: balance; /* AJUSTE: evita a palavra sozinha ("nome.") na última linha */
+}
+
+.hero .sub strong {
+  color: #fff;
+  font-weight: 800;
 }
 
 .cta {
