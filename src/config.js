@@ -6,7 +6,7 @@ export const escola = {
   // PROVISÓRIOS: confirmar com a escola
   telefoneExibido: '(81) 99899-0045',
   whatsapp: '5581998990045',
-  email: 'contato@colegiodimensao.com.br',
+  email: 'colegio.dimensao@outlook.com',
   horario: 'Segunda a sexta, das 8h às 17h',
   // PROVISÓRIOS: trocar pelos perfis reais da escola
   instagram: 'https://www.instagram.com/colegio.dimensao',

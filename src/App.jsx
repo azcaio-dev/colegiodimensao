@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import {
-  GraduationCap, CalendarDays, Users, Sun, Sunrise, SunMoon, Heart, BookOpen, ChevronRight, ChevronDown,
+  GraduationCap, CalendarDays, Users, Sun, Sunrise, Heart, BookOpen, ChevronRight, ChevronDown,
   MapPin, MessageCircle, Mail, Clock, Send, User, Phone, Building2, Utensils, Gamepad2, ExternalLink,
-  Volleyball, Smile, Trophy, UtensilsCrossed,
+  Volleyball, Smile, UtensilsCrossed,
 } from 'lucide-react'
 import { escola } from './config.js'
 import { Plane, Pencil, Halftone, Instagram, Facebook } from './components/Decor.jsx'
@@ -17,7 +17,6 @@ import sala2 from './assets/biblioteca.jpeg'
 import salao from './assets/salao.jpg'
 import cantina from './assets/cantina.jpg'
 import pebolim from './assets/pebolim.jpg'
-import pingpong from './assets/pingpong.jpg'
 import piscina from './assets/piscina.jpeg'
 import refeitorio from './assets/refeitorio.jpg'
 
@@ -31,11 +30,10 @@ const fotoNivel = (n) => {
 const zap = `https://wa.me/${escola.whatsapp}`
 const menu = [['sobre', 'Sobre'], ['niveis', 'Níveis de ensino'], ['estrutura', 'Estrutura'], ['contato', 'Contato']]
 
-// Manhã = sol nascendo, Tarde = sol alto, Integral = dia inteiro (sol e lua)
+// Manhã = sol nascendo, Tarde = sol alto
 const turnos = [
   [Sunrise, 'Manhã'],
   [Sun, 'Tarde'],
-  [SunMoon, 'Integral'],
 ]
 
 const valores = [
@@ -46,8 +44,7 @@ const valores = [
 
 const niveis = [
   { cor: 'yellow', icone: Users, etapa: 'Primeiros anos', titulo: 'Educação Infantil', img: fotoNivel(1), alt: 'Sala de aula da Educação Infantil', texto: 'Brincar, descobrir e começar a gostar de aprender, em salas coloridas e seguras.' },
-  { cor: 'blue', icone: BookOpen, etapa: '1º ao 5º ano', titulo: 'Fundamental I', img: fotoNivel(2), alt: 'Sala de aula do Fundamental I', texto: 'Leitura, escrita e matemática com acompanhamento de perto e rotina organizada.' },
-  { cor: 'purple', icone: GraduationCap, etapa: '6º ao 9º ano', titulo: 'Fundamental II', img: fotoNivel(3), alt: 'Sala de aula do Fundamental II', texto: 'Mais autonomia e responsabilidade, com apoio da escola e da família em cada passo.' },
+  { cor: 'blue', icone: BookOpen, etapa: '1º ao 9º ano', titulo: 'Fundamental 1 e 2', img: fotoNivel(3), alt: 'Sala de aula do Ensino Fundamental', texto: 'Leitura, escrita e matemática com acompanhamento de perto, e mais autonomia e responsabilidade a cada etapa, sempre com a família por perto.' },
 ]
 
 const galeria = [
@@ -57,9 +54,8 @@ const galeria = [
   [salao, 'Salão de eventos decorado', 'Salão de eventos', CalendarDays],
   [cantina, 'Cantina do colégio', 'Cantina', Utensils],
   [pebolim, 'Mesa de pebolim', 'Jogos', Gamepad2],
-  [pingpong, 'Mesa de tênis de mesa', 'Tênis de mesa', Trophy],
-  [piscina, 'Piscina', 'Piscina', Users],
   [refeitorio, 'Refeitório', 'Refeitório', UtensilsCrossed],
+  [piscina, 'Piscina', 'Piscina', Users], // a última foto da lista ocupa 2 colunas (ver .gal figure:last-child no CSS)
 ]
 
 function useSecaoAtiva(ids) {
@@ -321,7 +317,7 @@ export default function App() {
           <div className="wrap contato-grid">
             <div>
               <Pill icon={Mail}>Fale conosco</Pill>
-              <h2>Venha conhecer o <span className="acc-blue">Dimensão</span></h2>
+              <h2>Venha conhecer o <span className="acc-blue">Colégio Dimensão</span></h2>
               <p>Estamos prontos para receber você e sua família. Tire suas dúvidas, agende uma visita e conheça de perto tudo o que o {escola.nome} tem a oferecer.</p>
               <ul className="info">
                 <li><span className="ibox"><MapPin size={22} /></span><div><b>Endereço</b>{escola.endereco[0]}<br />{escola.endereco[1]}<br /><a href={escola.mapa} target="_blank" rel="noopener noreferrer">Ver no mapa <ExternalLink size={13} /></a></div></li>
