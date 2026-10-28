@@ -9,6 +9,7 @@ import {
 import { escola } from './config.js'
 import { Plane, Pencil, Halftone, Instagram, Facebook } from './components/Decor.jsx'
 import logo from './assets/logo.png'
+import fundamental1 from './assets/fundamental1.jpeg'
 import fachada from './assets/fachada.png'
 import quadra from './assets/quadra.jpeg'
 import parquinho1 from './assets/parquinho1.jpg'
@@ -16,7 +17,7 @@ import parquinho2 from './assets/parquinho2.png'
 import sala2 from './assets/biblioteca.jpeg'
 import salao from './assets/salao.jpg'
 import cantina from './assets/cantina.jpg'
-import pebolim from './assets/pebolim.jpg'
+import pebolim from './assets/jogos.png'
 import piscina from './assets/piscina.jpeg'
 import refeitorio from './assets/refeitorio.jpg'
 
@@ -44,7 +45,8 @@ const valores = [
 
 const niveis = [
   { cor: 'yellow', icone: Users, etapa: 'Primeiros anos', titulo: 'Educação Infantil', img: fotoNivel(1), alt: 'Sala de aula da Educação Infantil', texto: 'Brincar, descobrir e começar a gostar de aprender, em salas coloridas e seguras.' },
-  { cor: 'blue', icone: BookOpen, etapa: '1º ao 9º ano', titulo: 'Fundamental 1 e 2', img: fotoNivel(3), alt: 'Sala de aula do Ensino Fundamental', texto: 'Leitura, escrita e matemática com acompanhamento de perto, e mais autonomia e responsabilidade a cada etapa, sempre com a família por perto.' },
+  { cor: 'blue', icone: BookOpen, etapa: '1º ao 5º ano', titulo: 'Fundamental I', img: fundamental1, alt: 'Sala de aula do Fundamental I', texto: 'Leitura, escrita e matemática com acompanhamento de perto e rotina organizada.' },
+  { cor: 'purple', icone: GraduationCap, etapa: '6º ao 9º ano', titulo: 'Fundamental II', img: fotoNivel(3), alt: 'Sala de aula do Fundamental II', texto: 'Mais autonomia e responsabilidade, com apoio da escola e da família em cada passo.' },
 ]
 
 const galeria = [
@@ -53,9 +55,9 @@ const galeria = [
   [sala2, 'Sala de aula colorida', 'biblioteca', BookOpen],
   [salao, 'Salão de eventos decorado', 'Salão de eventos', CalendarDays],
   [cantina, 'Cantina do colégio', 'Cantina', Utensils],
-  [pebolim, 'Mesa de pebolim', 'Jogos', Gamepad2],
   [refeitorio, 'Refeitório', 'Refeitório', UtensilsCrossed],
-  [piscina, 'Piscina', 'Piscina', Users], // a última foto da lista ocupa 2 colunas (ver .gal figure:last-child no CSS)
+  [piscina, 'Piscina', 'Piscina', Users],
+  [pebolim, 'Mesa de pebolim', 'Jogos', Gamepad2], // a última foto da lista ocupa 2 colunas (ver .gal figure:last-child no CSS)
 ]
 
 function useSecaoAtiva(ids) {
