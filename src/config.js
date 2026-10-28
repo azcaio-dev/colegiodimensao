@@ -8,5 +8,7 @@ export const escola = {
   whatsapp: '5581998990045',
   email: 'contato@colegiodimensao.com.br',
   horario: 'Segunda a sexta, das 8h às 17h',
+  // PROVISÓRIOS: trocar pelos perfis reais da escola
+  instagram: 'https://www.instagram.com/colegio.dimensao',
+  facebook: 'https://www.facebook.com/colegiodimensaoolindape',
 }
-

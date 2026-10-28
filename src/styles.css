@@ -730,6 +730,22 @@ nav a.on {
   color: #4fb0ff;
 }
 
+.info .social a.ibox {
+  transition: background .2s, color .2s, transform .2s;
+}
+
+.info .social a.ibox:hover {
+  background: var(--sky);
+  color: #021035;
+  transform: translateY(-2px);
+}
+
+.info .social a:hover {
+  background: var(--sky);
+  color: #021035;
+  transform: translateY(-2px);
+}
+
 .ibox {
   display: grid;
   place-items: center;
@@ -2279,17 +2295,8 @@ html {
   }
 }
 
-/* Contatos em 2 colunas (endereço ocupa a linha toda) para ganhar altura */
+/* Contatos em uma coluna (endereço, telefone, e-mail, atendimento e redes) */
 @media (min-width: 1200px) and (max-height: 820px) {
-  .info {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 16px;
-  }
-
-  .info li:first-child {
-    grid-column: 1 / -1;
-  }
-
   .info li > div {
     min-width: 0;
     overflow-wrap: anywhere;

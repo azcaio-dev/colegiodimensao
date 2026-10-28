@@ -1,22 +1,24 @@
 import { useEffect, useState } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import {
   GraduationCap, CalendarDays, Users, Sun, Sunrise, SunMoon, Heart, BookOpen, ChevronRight, ChevronDown,
   MapPin, MessageCircle, Mail, Clock, Send, User, Phone, Building2, Utensils, Gamepad2, ExternalLink,
   Volleyball, Smile, Trophy, UtensilsCrossed,
 } from 'lucide-react'
 import { escola } from './config.js'
-import { Plane, Pencil, Halftone } from './components/Decor.jsx'
+import { Plane, Pencil, Halftone, Instagram, Facebook } from './components/Decor.jsx'
 import logo from './assets/logo.png'
 import fachada from './assets/fachada.png'
-import quadra from './assets/quadra.png'
+import quadra from './assets/quadra.jpeg'
 import parquinho1 from './assets/parquinho1.jpg'
 import parquinho2 from './assets/parquinho2.png'
-import sala2 from './assets/sala2.png'
+import sala2 from './assets/biblioteca.jpeg'
 import salao from './assets/salao.jpg'
 import cantina from './assets/cantina.jpg'
 import pebolim from './assets/pebolim.jpg'
 import pingpong from './assets/pingpong.jpg'
-import auditorio from './assets/auditorio.jpg'
+import piscina from './assets/piscina.jpeg'
 import refeitorio from './assets/refeitorio.jpg'
 
 // Fotos dos cards de níveis: sala1, sala2 e sala3 (em src/assets, .png tem prioridade sobre .jpg)
@@ -51,12 +53,12 @@ const niveis = [
 const galeria = [
   [quadra, 'Quadra poliesportiva', 'Quadra', Volleyball, 'big'],
   [parquinho2, 'Parquinho com escorregador', 'Parquinho', Smile],
-  [sala2, 'Sala de aula colorida', 'Salas de aula', BookOpen],
+  [sala2, 'Sala de aula colorida', 'biblioteca', BookOpen],
   [salao, 'Salão de eventos decorado', 'Salão de eventos', CalendarDays],
   [cantina, 'Cantina do colégio', 'Cantina', Utensils],
   [pebolim, 'Mesa de pebolim', 'Jogos', Gamepad2],
   [pingpong, 'Mesa de tênis de mesa', 'Tênis de mesa', Trophy],
-  [auditorio, 'Auditório com cadeiras', 'Auditório', Users],
+  [piscina, 'Piscina', 'Piscina', Users],
   [refeitorio, 'Refeitório', 'Refeitório', UtensilsCrossed],
 ]
 
@@ -113,6 +115,39 @@ function useHeaderOculto() {
   return oculto
 }
 
+// Rolagem suave (inércia) com a biblioteca Lenis. Os links de âncora (#contato etc.)
+// também deslizam suavemente e param 48px abaixo do topo, como o scroll-padding-top do CSS.
+function useRolagemSuave() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 })
+    let raf
+    const loop = (t) => {
+      lenis.raf(t)
+      raf = requestAnimationFrame(loop)
+    }
+    raf = requestAnimationFrame(loop)
+
+    const aoClicar = (e) => {
+      const link = e.target.closest && e.target.closest('a[href^="#"]')
+      if (!link) return
+      const href = link.getAttribute('href')
+      if (!href || href.length < 2) return
+      const alvo = document.querySelector(href)
+      if (!alvo) return
+      e.preventDefault()
+      lenis.scrollTo(alvo, { offset: -48, duration: 1.2 })
+    }
+    document.addEventListener('click', aoClicar)
+
+    return () => {
+      document.removeEventListener('click', aoClicar)
+      cancelAnimationFrame(raf)
+      lenis.destroy()
+    }
+  }, [])
+}
+
 function Pill({ icon: Icon, children, className = '', style }) {
   return <span className={`pill ${className}`} style={style}><Icon size={18} />{children}</span>
 }
@@ -137,6 +172,7 @@ function enviarWhatsApp(e) {
 export default function App() {
   const ativa = useSecaoAtiva(['inicio', ...menu.map((m) => m[0])])
   const headerOculto = useHeaderOculto()
+  useRolagemSuave()
   const [tel, setTel] = useState('')
 
   // Sempre abre a página no topo
@@ -162,7 +198,7 @@ export default function App() {
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: '0px 0px -45% 0px' }
     )
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
@@ -192,7 +228,7 @@ export default function App() {
                 <span className="rise" style={{ '--d': '.2s' }}>Educar é cuidar</span>
                 <span className="acc-yellow rise" style={{ '--d': '.35s' }}>de cada detalhe.</span>
               </h1>
-              <p className="sub rise" style={{ '--d': '.5s' }}><strong>Desde 1986</strong> educando crianças no coração de Ouro Preto, em Olinda. Da educação infantil ao fundamental II, com acompanhamento de perto, rotina organizada e uma escola onde seu filho é conhecido pelo nome.</p>
+              <p className="sub rise" style={{ '--d': '.5s' }}><strong>Desde 1983</strong> educando crianças no coração de Ouro Preto, em Olinda. Da educação infantil ao fundamental II, com acompanhamento de perto, rotina organizada e uma escola onde seu filho é conhecido pelo nome.</p>
               <div className="cta rise" style={{ '--d': '.65s' }}>
                 <a className="btn big-btn" href="#contato"><CalendarDays size={22} />Agendar visita<ChevronRight size={20} className="arrow" /></a>
                 <a className="btn ghost big-btn" href="#estrutura">Conhecer a estrutura<ChevronRight size={20} className="arrow" /></a>
@@ -292,15 +328,16 @@ export default function App() {
                 <li><span className="ibox"><Phone size={22} /></span><div><b>Telefone e WhatsApp</b><a href={zap}>{escola.telefoneExibido}</a></div></li>
                 <li><span className="ibox"><Mail size={22} /></span><div><b>E-mail</b><a href={`mailto:${escola.email}`}>{escola.email}</a></div></li>
                 <li><span className="ibox"><Clock size={22} /></span><div><b>Atendimento</b>{escola.horario}</div></li>
+                <li className="social"><a className="ibox" href={escola.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do colégio"><Instagram size={22} /></a><a className="ibox" href={escola.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook do colégio"><Facebook size={22} /></a></li>
               </ul>
-              <div className="nota"><span className="tile"><Users size={26} /></span><div><h3>Mensalidades</h3><p>Cada família tem uma condição. Fale com a secretaria para conhecer valores e possibilidades.</p></div></div>
+          
             </div>
             <form onSubmit={enviarWhatsApp} className="fcard">
               <div className="fhead"><span className="tile"><MessageCircle size={30} /></span><div><h3>Envie sua mensagem</h3><p>Preencha os campos abaixo e nossa equipe entrará em contato o mais breve possível.</p></div></div>
               <label>Seu nome<span className="fld"><User size={20} /><input name="nome" required autoComplete="name" placeholder="Digite seu nome completo" /></span></label>
               <label>Telefone<span className="fld"><Phone size={20} /><input name="tel" type="tel" inputMode="tel" required autoComplete="tel" placeholder="(00) 00000-0000" value={tel} onChange={(e) => setTel(mascaraTelefone(e.target.value))} maxLength={15} pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Digite o telefone com DDD, por exemplo (81) 99999-0000" /></span></label>
               <label>Interesse<span className="fld"><GraduationCap size={20} /><select name="nivel"><option>Educação Infantil</option><option>Fundamental I</option><option>Fundamental II</option></select><ChevronDown size={18} className="chev" /></span></label>
-              <label>Mensagem<span className="fld"><MessageCircle size={20} /><textarea name="msg" placeholder="Conte um pouco sobre seu filho e o turno desejado..." /></span></label>
+              <label>Mensagem<span className="fld"><MessageCircle size={20} /><textarea name="msg" data-lenis-prevent placeholder="Conte um pouco sobre seu filho e o turno desejado..." /></span></label>
               <button className="btn wide" type="submit"><Send size={20} />Falar com a secretaria</button>
               <p className="fnote">Ao enviar, você será levado ao WhatsApp da secretaria com a mensagem já pronta.</p>
             </form>
@@ -311,7 +348,7 @@ export default function App() {
       </main>
 
       <footer>
-        <div className="wrap"><img className="brand-logo" src={logo} alt="Colégio Dimensão" /><p>{escola.nome}. Educação infantil e ensino fundamental em Ouro Preto, Olinda-PE.</p></div>
+        <div className="wrap"><img className="brand-logo" src={logo} alt="Colégio Dimensão" /><p>{escola.nome}. Educação infantil e ensino fundamental I e II em Ouro Preto, Olinda-PE.</p></div>
       </footer>
     </>
   )
